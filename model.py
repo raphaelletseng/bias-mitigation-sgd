@@ -4,10 +4,6 @@ import torch.nn.functional as F
 import pytorch_lightning as pl
 import torch.optim as optim
 from skorch import NeuralNetClassifier
-from fairlearn.reductions import DemographicParity
-
-
-
 
 class RegressionModel(nn.Module):
 #class RegressionModel(pl.LightningModule):
@@ -135,3 +131,8 @@ class SampleWeightNeuralNet(NeuralNetClassifier):
         y_pred = net.predict(X)
         return y_pred
 '''
+
+def emb_init(x):
+    x = x.weight.data
+    sc = 2/(x.size(1)+1)
+    x.uniform_(-sc,sc)

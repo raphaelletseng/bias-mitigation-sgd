@@ -1,0 +1,159 @@
+2021-03-16 17:17:36,252 INFO    MainThread:19328 [internal.py:wandb_internal():81] W&B internal server running at pid: 19328
+2021-03-16 17:17:36,255 INFO    WriterThread:19328 [datastore.py:open_for_write():77] open: C:\Users\rapha\Documents\GitHub\bias-mitigation-sgd\wandb\run-20210316_171734-3kh5p60p\run-3kh5p60p.wandb
+2021-03-16 17:17:36,256 DEBUG   HandlerThread:19328 [handler.py:handle_request():93] handle_request: check_version
+2021-03-16 17:17:36,257 DEBUG   SenderThread:19328 [sender.py:send():117] send: header
+2021-03-16 17:17:36,257 DEBUG   SenderThread:19328 [sender.py:send():117] send: request
+2021-03-16 17:17:36,258 DEBUG   SenderThread:19328 [sender.py:send_request():126] send_request: check_version
+2021-03-16 17:17:36,261 DEBUG   Thread-8  :19328 [connectionpool.py:_new_conn():975] Starting new HTTPS connection (1): pypi.org:443
+2021-03-16 17:17:36,349 DEBUG   Thread-8  :19328 [connectionpool.py:_make_request():461] https://pypi.org:443 "GET /pypi/wandb/json HTTP/1.1" 200 55088
+2021-03-16 17:17:36,389 DEBUG   SenderThread:19328 [sender.py:send():117] send: run
+2021-03-16 17:17:36,433 DEBUG   SenderThread:19328 [util.py:is_cygwin_git():315] Failed checking if running in CYGWIN due to: FileNotFoundError(2, 'The system cannot find the file specified', None, 2, None)
+2021-03-16 17:17:36,439 DEBUG   SenderThread:19328 [cmd.py:execute():719] Popen(['git', 'cat-file', '--batch-check'], cwd=C:\Users\rapha\Documents\GitHub\bias-mitigation-sgd, universal_newlines=False, shell=None, istream=<valid stream>)
+2021-03-16 17:17:36,533 DEBUG   SenderThread:19328 [connectionpool.py:_new_conn():975] Starting new HTTPS connection (1): api.wandb.ai:443
+2021-03-16 17:17:36,694 DEBUG   SenderThread:19328 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2021-03-16 17:17:36,755 INFO    SenderThread:19328 [dir_watcher.py:__init__():165] watching files in: C:\Users\rapha\Documents\GitHub\bias-mitigation-sgd\wandb\run-20210316_171734-3kh5p60p\files
+2021-03-16 17:17:36,755 INFO    SenderThread:19328 [sender.py:_start_run_threads():596] run started: 3kh5p60p with start time 1615929454
+2021-03-16 17:17:36,839 DEBUG   SenderThread:19328 [sender.py:send():117] send: summary
+2021-03-16 17:17:36,841 DEBUG   HandlerThread:19328 [handler.py:handle_request():93] handle_request: run_start
+2021-03-16 17:17:36,965 INFO    SenderThread:19328 [sender.py:_save_file():682] saving file wandb-summary.json with policy end
+2021-03-16 17:17:37,771 INFO    Thread-12 :19328 [dir_watcher.py:_on_file_created():213] file/dir created: C:\Users\rapha\Documents\GitHub\bias-mitigation-sgd\wandb\run-20210316_171734-3kh5p60p\files\wandb-summary.json
+2021-03-16 17:17:38,853 DEBUG   Thread-9  :19328 [connectionpool.py:_new_conn():975] Starting new HTTPS connection (1): api.wandb.ai:443
+2021-03-16 17:17:39,005 DEBUG   Thread-9  :19328 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /files/raphaelletseng/fairlearn-bias-mitigation-sgd/3kh5p60p/file_stream HTTP/1.1" 200 None
+2021-03-16 17:17:40,624 DEBUG   HandlerThread:19328 [meta.py:__init__():34] meta init
+2021-03-16 17:17:40,628 DEBUG   HandlerThread:19328 [meta.py:__init__():48] meta init done
+2021-03-16 17:17:40,628 DEBUG   HandlerThread:19328 [meta.py:probe():190] probe
+2021-03-16 17:17:40,630 DEBUG   HandlerThread:19328 [meta.py:_setup_git():180] setup git
+2021-03-16 17:17:40,635 DEBUG   HandlerThread:19328 [cmd.py:execute():719] Popen(['git', 'cat-file', '--batch-check'], cwd=C:\Users\rapha\Documents\GitHub\bias-mitigation-sgd, universal_newlines=False, shell=None, istream=<valid stream>)
+2021-03-16 17:17:40,724 DEBUG   HandlerThread:19328 [cmd.py:execute():719] Popen(['git', 'rev-parse', '--show-toplevel'], cwd=C:\Users\rapha\Documents\GitHub\bias-mitigation-sgd, universal_newlines=False, shell=None, istream=None)
+2021-03-16 17:17:40,798 DEBUG   HandlerThread:19328 [meta.py:_setup_git():187] setup git done
+2021-03-16 17:17:40,798 DEBUG   HandlerThread:19328 [meta.py:_save_pip():52] save pip
+2021-03-16 17:17:40,800 DEBUG   HandlerThread:19328 [meta.py:_save_pip():66] save pip done
+2021-03-16 17:17:40,800 DEBUG   HandlerThread:19328 [meta.py:probe():231] probe done
+2021-03-16 17:17:40,809 DEBUG   SenderThread:19328 [sender.py:send():117] send: files
+2021-03-16 17:17:40,809 INFO    SenderThread:19328 [sender.py:_save_file():682] saving file wandb-metadata.json with policy now
+2021-03-16 17:17:40,829 DEBUG   HandlerThread:19328 [handler.py:handle_request():93] handle_request: status
+2021-03-16 17:17:40,829 DEBUG   SenderThread:19328 [sender.py:send():117] send: request
+2021-03-16 17:17:40,830 DEBUG   SenderThread:19328 [sender.py:send_request():126] send_request: status
+2021-03-16 17:17:40,837 DEBUG   SenderThread:19328 [connectionpool.py:_new_conn():975] Starting new HTTPS connection (1): api.wandb.ai:443
+2021-03-16 17:17:40,884 DEBUG   Thread-17 :19328 [connectionpool.py:_new_conn():975] Starting new HTTPS connection (1): api.wandb.ai:443
+2021-03-16 17:17:40,972 DEBUG   SenderThread:19328 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2021-03-16 17:17:40,989 DEBUG   SenderThread:19328 [sender.py:send():117] send: telemetry
+2021-03-16 17:17:41,002 DEBUG   HandlerThread:19328 [handler.py:handle_request():93] handle_request: poll_exit
+2021-03-16 17:17:41,002 DEBUG   SenderThread:19328 [connectionpool.py:_new_conn():975] Starting new HTTPS connection (1): api.wandb.ai:443
+2021-03-16 17:17:41,025 DEBUG   Thread-17 :19328 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2021-03-16 17:17:41,037 DEBUG   Thread-17 :19328 [connectionpool.py:_new_conn():975] Starting new HTTPS connection (1): storage.googleapis.com:443
+2021-03-16 17:17:41,076 DEBUG   Thread-9  :19328 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /files/raphaelletseng/fairlearn-bias-mitigation-sgd/3kh5p60p/file_stream HTTP/1.1" 200 None
+2021-03-16 17:17:41,164 DEBUG   SenderThread:19328 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2021-03-16 17:17:41,175 DEBUG   SenderThread:19328 [sender.py:send():117] send: exit
+2021-03-16 17:17:41,175 INFO    SenderThread:19328 [sender.py:send_exit():195] handling exit code: 1
+2021-03-16 17:17:41,175 INFO    SenderThread:19328 [sender.py:send_exit():203] send defer
+2021-03-16 17:17:41,176 DEBUG   SenderThread:19328 [sender.py:send():117] send: request
+2021-03-16 17:17:41,176 DEBUG   SenderThread:19328 [sender.py:send_request():126] send_request: poll_exit
+2021-03-16 17:17:41,176 DEBUG   HandlerThread:19328 [handler.py:handle_request():93] handle_request: defer
+2021-03-16 17:17:41,177 INFO    HandlerThread:19328 [handler.py:handle_request_defer():107] handle defer: 0
+2021-03-16 17:17:41,177 DEBUG   SenderThread:19328 [sender.py:send():117] send: request
+2021-03-16 17:17:41,177 DEBUG   SenderThread:19328 [sender.py:send_request():126] send_request: defer
+2021-03-16 17:17:41,177 INFO    SenderThread:19328 [sender.py:send_request_defer():212] handle sender defer: 0
+2021-03-16 17:17:41,177 INFO    SenderThread:19328 [sender.py:send_request_defer():248] send defer: 1
+2021-03-16 17:17:41,178 DEBUG   HandlerThread:19328 [handler.py:handle_request():93] handle_request: defer
+2021-03-16 17:17:41,178 INFO    HandlerThread:19328 [handler.py:handle_request_defer():107] handle defer: 1
+2021-03-16 17:17:41,304 DEBUG   SenderThread:19328 [sender.py:send():117] send: request
+2021-03-16 17:17:41,305 DEBUG   SenderThread:19328 [sender.py:send_request():126] send_request: defer
+2021-03-16 17:17:41,305 INFO    SenderThread:19328 [sender.py:send_request_defer():212] handle sender defer: 1
+2021-03-16 17:17:41,305 INFO    SenderThread:19328 [sender.py:send_request_defer():248] send defer: 2
+2021-03-16 17:17:41,306 DEBUG   SenderThread:19328 [sender.py:send():117] send: stats
+2021-03-16 17:17:41,307 DEBUG   HandlerThread:19328 [handler.py:handle_request():93] handle_request: defer
+2021-03-16 17:17:41,307 INFO    HandlerThread:19328 [handler.py:handle_request_defer():107] handle defer: 2
+2021-03-16 17:17:41,308 DEBUG   SenderThread:19328 [sender.py:send():117] send: request
+2021-03-16 17:17:41,308 DEBUG   SenderThread:19328 [sender.py:send_request():126] send_request: defer
+2021-03-16 17:17:41,308 INFO    SenderThread:19328 [sender.py:send_request_defer():212] handle sender defer: 2
+2021-03-16 17:17:41,308 INFO    SenderThread:19328 [sender.py:send_request_defer():248] send defer: 3
+2021-03-16 17:17:41,308 DEBUG   HandlerThread:19328 [handler.py:handle_request():93] handle_request: defer
+2021-03-16 17:17:41,308 INFO    HandlerThread:19328 [handler.py:handle_request_defer():107] handle defer: 3
+2021-03-16 17:17:41,308 DEBUG   SenderThread:19328 [sender.py:send():117] send: summary
+2021-03-16 17:17:41,309 INFO    SenderThread:19328 [sender.py:_save_file():682] saving file wandb-summary.json with policy end
+2021-03-16 17:17:41,310 DEBUG   SenderThread:19328 [sender.py:send():117] send: request
+2021-03-16 17:17:41,310 DEBUG   SenderThread:19328 [sender.py:send_request():126] send_request: defer
+2021-03-16 17:17:41,310 INFO    SenderThread:19328 [sender.py:send_request_defer():212] handle sender defer: 3
+2021-03-16 17:17:41,310 INFO    SenderThread:19328 [sender.py:send_request_defer():248] send defer: 4
+2021-03-16 17:17:41,312 DEBUG   HandlerThread:19328 [handler.py:handle_request():93] handle_request: defer
+2021-03-16 17:17:41,312 INFO    HandlerThread:19328 [handler.py:handle_request_defer():107] handle defer: 4
+2021-03-16 17:17:41,312 DEBUG   SenderThread:19328 [sender.py:send():117] send: request
+2021-03-16 17:17:41,312 DEBUG   SenderThread:19328 [sender.py:send_request():126] send_request: defer
+2021-03-16 17:17:41,312 INFO    SenderThread:19328 [sender.py:send_request_defer():212] handle sender defer: 4
+2021-03-16 17:17:41,313 INFO    SenderThread:19328 [dir_watcher.py:finish():279] shutting down directory watcher
+2021-03-16 17:17:41,396 DEBUG   Thread-17 :19328 [connectionpool.py:_make_request():461] https://storage.googleapis.com:443 "PUT /wandb-production.appspot.com/raphaelletseng/fairlearn-bias-mitigation-sgd/3kh5p60p/wandb-metadata.json?Expires=1616015859&GoogleAccessId=wandb-production%40appspot.gserviceaccount.com&Signature=btMX%2BwoxjXZyaZQ0FScxecfj%2BNgPKf5tLb5TMK9Wa5BhJRZnKU2pBzNaBHet5uY1cxXXyLUFcLw38GCTIdxCjzdIJykwZYXuO10OzX858cqMEaVfXLZR6%2BulvDTW5cgerluEf6gLGQuF9aEkBfvkS0A18H8h7FMfzfMMXhJ%2FO1SljtldYDcvlEoROIRF536IDLk9SPcDZx2%2FjFThbcBV5fxtbpVUeTz5QSeNjXSTtqbRfr8lLi3XmO27i6163XVu7cZFKhZfjj78V%2Bhdwk6%2BYZV6qReJxscQPlfrwEUYap8bZuhDEvuqkUg%2Bzv%2FZShNCSUA6zVGK3WW5QnOy7fZeGA%3D%3D HTTP/1.1" 200 0
+2021-03-16 17:17:41,398 INFO    Thread-17 :19328 [upload_job.py:push():133] Uploaded file C:\Users\rapha\AppData\Local\Temp\tmp0ajhr25awandb\jafdbno3-wandb-metadata.json
+2021-03-16 17:17:41,804 INFO    SenderThread:19328 [dir_watcher.py:_on_file_modified():226] file/dir modified: C:\Users\rapha\Documents\GitHub\bias-mitigation-sgd\wandb\run-20210316_171734-3kh5p60p\files\wandb-summary.json
+2021-03-16 17:17:41,805 INFO    SenderThread:19328 [dir_watcher.py:_on_file_modified():226] file/dir modified: C:\Users\rapha\Documents\GitHub\bias-mitigation-sgd\wandb\run-20210316_171734-3kh5p60p\files\config.yaml
+2021-03-16 17:17:41,806 INFO    SenderThread:19328 [dir_watcher.py:_on_file_created():213] file/dir created: C:\Users\rapha\Documents\GitHub\bias-mitigation-sgd\wandb\run-20210316_171734-3kh5p60p\files\requirements.txt
+2021-03-16 17:17:41,807 INFO    SenderThread:19328 [dir_watcher.py:_on_file_created():213] file/dir created: C:\Users\rapha\Documents\GitHub\bias-mitigation-sgd\wandb\run-20210316_171734-3kh5p60p\files\output.log
+2021-03-16 17:17:41,808 INFO    SenderThread:19328 [dir_watcher.py:_on_file_created():213] file/dir created: C:\Users\rapha\Documents\GitHub\bias-mitigation-sgd\wandb\run-20210316_171734-3kh5p60p\files\wandb-metadata.json
+2021-03-16 17:17:41,808 INFO    SenderThread:19328 [dir_watcher.py:finish():309] scan: C:\Users\rapha\Documents\GitHub\bias-mitigation-sgd\wandb\run-20210316_171734-3kh5p60p\files
+2021-03-16 17:17:41,808 INFO    SenderThread:19328 [dir_watcher.py:finish():315] scan save: C:\Users\rapha\Documents\GitHub\bias-mitigation-sgd\wandb\run-20210316_171734-3kh5p60p\files\config.yaml config.yaml
+2021-03-16 17:17:41,808 INFO    SenderThread:19328 [dir_watcher.py:finish():315] scan save: C:\Users\rapha\Documents\GitHub\bias-mitigation-sgd\wandb\run-20210316_171734-3kh5p60p\files\output.log output.log
+2021-03-16 17:17:41,809 INFO    SenderThread:19328 [dir_watcher.py:finish():315] scan save: C:\Users\rapha\Documents\GitHub\bias-mitigation-sgd\wandb\run-20210316_171734-3kh5p60p\files\requirements.txt requirements.txt
+2021-03-16 17:17:41,814 INFO    SenderThread:19328 [dir_watcher.py:finish():315] scan save: C:\Users\rapha\Documents\GitHub\bias-mitigation-sgd\wandb\run-20210316_171734-3kh5p60p\files\wandb-metadata.json wandb-metadata.json
+2021-03-16 17:17:41,814 INFO    SenderThread:19328 [dir_watcher.py:finish():315] scan save: C:\Users\rapha\Documents\GitHub\bias-mitigation-sgd\wandb\run-20210316_171734-3kh5p60p\files\wandb-summary.json wandb-summary.json
+2021-03-16 17:17:41,814 DEBUG   Thread-18 :19328 [connectionpool.py:_new_conn():975] Starting new HTTPS connection (1): api.wandb.ai:443
+2021-03-16 17:17:41,819 DEBUG   Thread-19 :19328 [connectionpool.py:_new_conn():975] Starting new HTTPS connection (1): api.wandb.ai:443
+2021-03-16 17:17:41,819 INFO    SenderThread:19328 [sender.py:send_request_defer():248] send defer: 5
+2021-03-16 17:17:41,824 DEBUG   Thread-20 :19328 [connectionpool.py:_new_conn():975] Starting new HTTPS connection (1): api.wandb.ai:443
+2021-03-16 17:17:41,824 DEBUG   HandlerThread:19328 [handler.py:handle_request():93] handle_request: defer
+2021-03-16 17:17:41,828 INFO    HandlerThread:19328 [handler.py:handle_request_defer():107] handle defer: 5
+2021-03-16 17:17:41,828 DEBUG   SenderThread:19328 [sender.py:send():117] send: request
+2021-03-16 17:17:41,828 DEBUG   SenderThread:19328 [sender.py:send_request():126] send_request: defer
+2021-03-16 17:17:41,828 INFO    SenderThread:19328 [sender.py:send_request_defer():212] handle sender defer: 5
+2021-03-16 17:17:41,828 INFO    SenderThread:19328 [file_pusher.py:finish():176] shutting down file pusher
+2021-03-16 17:17:41,828 INFO    SenderThread:19328 [sender.py:send_request_defer():248] send defer: 6
+2021-03-16 17:17:41,829 DEBUG   HandlerThread:19328 [handler.py:handle_request():93] handle_request: defer
+2021-03-16 17:17:41,829 INFO    HandlerThread:19328 [handler.py:handle_request_defer():107] handle defer: 6
+2021-03-16 17:17:41,830 DEBUG   Thread-21 :19328 [connectionpool.py:_new_conn():975] Starting new HTTPS connection (1): api.wandb.ai:443
+2021-03-16 17:17:41,830 DEBUG   SenderThread:19328 [sender.py:send():117] send: request
+2021-03-16 17:17:41,830 DEBUG   SenderThread:19328 [sender.py:send_request():126] send_request: defer
+2021-03-16 17:17:41,830 INFO    SenderThread:19328 [sender.py:send_request_defer():212] handle sender defer: 6
+2021-03-16 17:17:41,914 DEBUG   Thread-9  :19328 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /files/raphaelletseng/fairlearn-bias-mitigation-sgd/3kh5p60p/file_stream HTTP/1.1" 200 None
+2021-03-16 17:17:41,951 DEBUG   Thread-18 :19328 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2021-03-16 17:17:41,952 DEBUG   Thread-19 :19328 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2021-03-16 17:17:41,953 DEBUG   Thread-20 :19328 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2021-03-16 17:17:41,966 DEBUG   Thread-21 :19328 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2021-03-16 17:17:41,974 DEBUG   Thread-20 :19328 [connectionpool.py:_new_conn():975] Starting new HTTPS connection (1): storage.googleapis.com:443
+2021-03-16 17:17:41,985 DEBUG   Thread-18 :19328 [connectionpool.py:_new_conn():975] Starting new HTTPS connection (1): storage.googleapis.com:443
+2021-03-16 17:17:41,986 DEBUG   Thread-21 :19328 [connectionpool.py:_new_conn():975] Starting new HTTPS connection (1): storage.googleapis.com:443
+2021-03-16 17:17:41,986 DEBUG   Thread-9  :19328 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /files/raphaelletseng/fairlearn-bias-mitigation-sgd/3kh5p60p/file_stream HTTP/1.1" 200 None
+2021-03-16 17:17:41,992 INFO    SenderThread:19328 [sender.py:send_request_defer():248] send defer: 7
+2021-03-16 17:17:41,993 DEBUG   Thread-19 :19328 [connectionpool.py:_new_conn():975] Starting new HTTPS connection (1): storage.googleapis.com:443
+2021-03-16 17:17:41,993 DEBUG   HandlerThread:19328 [handler.py:handle_request():93] handle_request: defer
+2021-03-16 17:17:41,994 INFO    HandlerThread:19328 [handler.py:handle_request_defer():107] handle defer: 7
+2021-03-16 17:17:41,994 DEBUG   SenderThread:19328 [sender.py:send():117] send: request
+2021-03-16 17:17:41,994 DEBUG   SenderThread:19328 [sender.py:send_request():126] send_request: defer
+2021-03-16 17:17:41,994 INFO    SenderThread:19328 [sender.py:send_request_defer():212] handle sender defer: 7
+2021-03-16 17:17:41,994 INFO    SenderThread:19328 [sender.py:send_request_defer():248] send defer: 8
+2021-03-16 17:17:41,995 DEBUG   SenderThread:19328 [sender.py:send():117] send: final
+2021-03-16 17:17:41,996 DEBUG   HandlerThread:19328 [handler.py:handle_request():93] handle_request: defer
+2021-03-16 17:17:41,996 INFO    HandlerThread:19328 [handler.py:handle_request_defer():107] handle defer: 8
+2021-03-16 17:17:41,996 DEBUG   SenderThread:19328 [sender.py:send():117] send: footer
+2021-03-16 17:17:41,996 DEBUG   SenderThread:19328 [sender.py:send():117] send: request
+2021-03-16 17:17:41,996 DEBUG   SenderThread:19328 [sender.py:send_request():126] send_request: defer
+2021-03-16 17:17:41,996 INFO    SenderThread:19328 [sender.py:send_request_defer():212] handle sender defer: 8
+2021-03-16 17:17:42,288 DEBUG   Thread-21 :19328 [connectionpool.py:_make_request():461] https://storage.googleapis.com:443 "PUT /wandb-production.appspot.com/raphaelletseng/fairlearn-bias-mitigation-sgd/3kh5p60p/wandb-summary.json?Expires=1616015860&GoogleAccessId=wandb-production%40appspot.gserviceaccount.com&Signature=cDcKx%2B2zH4kJ%2Bw1%2Fiaitf%2FuXfMifxE6hO0OVeB9tLP5XK%2BEFx2L%2BH0ZY3NIJSYBp064Zh9IAPK%2BTXvUmj2HzHoSVbE1I6wud4d2CNZlbgFAMV3FLCAlCoO82cI6MM1GlkSzdB28Uma0ZCPV7kHMRWaK%2ByzFmYkPEGTX7wLn1XeSH6YjGGEcXWUnH%2Bpy6SzzCDNL8jbybpvO4RJcXDV8VxcvFmszEpY774vyenibAZrnsKOTrGmxwaIgtJMG6mPM3WMzNelRSSZ3K10M1Vf%2B4%2FKpS0C94zHwkGRHK1PlUNtbxSdXosfh6BpCM1BN2lAKJF98i0QWfh0sKX8Nm1NiNXg%3D%3D HTTP/1.1" 200 0
+2021-03-16 17:17:42,291 INFO    Thread-21 :19328 [upload_job.py:push():133] Uploaded file C:\Users\rapha\Documents\GitHub\bias-mitigation-sgd\wandb\run-20210316_171734-3kh5p60p\files\wandb-summary.json
+2021-03-16 17:17:42,294 DEBUG   Thread-20 :19328 [connectionpool.py:_make_request():461] https://storage.googleapis.com:443 "PUT /wandb-production.appspot.com/raphaelletseng/fairlearn-bias-mitigation-sgd/3kh5p60p/requirements.txt?Expires=1616015860&GoogleAccessId=wandb-production%40appspot.gserviceaccount.com&Signature=o5eqOCMIMfnoRmyWMsV6is5VIEQFnL4iUTwXHM358iRbvtpC4Sn0LLaA7S6KoMfyStsoykPRhWcvHEZUQftLD12tobHWcsJ%2BpYCZQPwFRkUXonQzeKaX6kY9y758kJg1clN8lNHoG3rh%2BGzFykpTLkJdSCG6oy17d6ho7n1Q2qJWC4pNTgt%2BpztI9HE95VMCOpXgBBjKMXTH4gQx3I3QvX7faaqeHOxSWsW%2BlNMLS%2BJI1Iwq%2Fr8wA70PW7FZePG6J%2FYINudf5sfWYG8shATPNzToF4Cj1PsrsFPbeUBOaF4uPjbcDY3ZKxoApz6Mdw3soRUh0gBdhWqPj%2FVDtvVsug%3D%3D HTTP/1.1" 200 0
+2021-03-16 17:17:42,299 DEBUG   Thread-18 :19328 [connectionpool.py:_make_request():461] https://storage.googleapis.com:443 "PUT /wandb-production.appspot.com/raphaelletseng/fairlearn-bias-mitigation-sgd/3kh5p60p/config.yaml?Expires=1616015860&GoogleAccessId=wandb-production%40appspot.gserviceaccount.com&Signature=jcCDAONyzLnjxKVz4NGZ22%2FvISUn3te3qcJ4YdCh6oZU6YLTMDQirkLqXIWCE5RwUGmaq7JgH%2FyvF1%2FvP7w%2FHwEIJn42odAQhswlSYTf4BcWR0tRzG1xsAgfhrOFC%2F9eYktnj7ZGu1rYFAO8TtTKwlT8keNAA6eeC2XOGMtXekgZNo45ZkvHRNtZu5JcmDleIG3F4GplBUltuNW6xgah8YMuBO8M7L63kT1p5NMZ4eFseAm4W8jBEnh3rd9hnoTCLbxUSGpvKLWC2xWWcSVfnYt%2FxVPrfAbd1UWyk7XohXcWjyJjxL7siyJ%2FsFT86QBCVzGs21%2BRb%2BGi7D1HHCYHfA%3D%3D HTTP/1.1" 200 0
+2021-03-16 17:17:42,300 INFO    Thread-20 :19328 [upload_job.py:push():133] Uploaded file C:\Users\rapha\Documents\GitHub\bias-mitigation-sgd\wandb\run-20210316_171734-3kh5p60p\files\requirements.txt
+2021-03-16 17:17:42,303 INFO    Thread-18 :19328 [upload_job.py:push():133] Uploaded file C:\Users\rapha\Documents\GitHub\bias-mitigation-sgd\wandb\run-20210316_171734-3kh5p60p\files\config.yaml
+2021-03-16 17:17:42,331 DEBUG   Thread-19 :19328 [connectionpool.py:_make_request():461] https://storage.googleapis.com:443 "PUT /wandb-production.appspot.com/raphaelletseng/fairlearn-bias-mitigation-sgd/3kh5p60p/output.log?Expires=1616015860&GoogleAccessId=wandb-production%40appspot.gserviceaccount.com&Signature=Sz7WBZUIzjlrfCKlnoSOHjz4soiZolNqzK9OIwhQDeVKltCTpCpMgh3OzpZ3Bav9QBAhOaXxwfbbmzCNDxbnH1QOBezEasUYdG2suYxDa6L6rLTRl44KeaouOMxRB%2BCQz9yfOOP6YOzzDlRU7apzIBihOeYOVCsGDU1W8TKjhlp6%2Fkkc%2F%2FDQvBMwEGoySQPXMEfIm6MM55JoP241Vk6ffyAo0JfD8yghsNMcWNN2pcx5PYV0%2Fl9h6VDu%2BkzrwX%2FuHsMiNH5tWA1W%2BAB%2BJrLpppEImiUDCM6oZv%2Faki44tS0SskWB2C1kWUDcSE7skdTfmmQzl%2BJSU1%2F5TB1aalieGg%3D%3D HTTP/1.1" 200 0
+2021-03-16 17:17:42,335 INFO    Thread-19 :19328 [upload_job.py:push():133] Uploaded file C:\Users\rapha\Documents\GitHub\bias-mitigation-sgd\wandb\run-20210316_171734-3kh5p60p\files\output.log
+2021-03-16 17:17:43,180 DEBUG   HandlerThread:19328 [handler.py:handle_request():93] handle_request: poll_exit
+2021-03-16 17:17:43,181 DEBUG   SenderThread:19328 [sender.py:send():117] send: request
+2021-03-16 17:17:43,181 DEBUG   SenderThread:19328 [sender.py:send_request():126] send_request: poll_exit
+2021-03-16 17:17:43,182 INFO    SenderThread:19328 [file_pusher.py:join():181] waiting for file pusher
+2021-03-16 17:17:43,189 DEBUG   HandlerThread:19328 [handler.py:handle_request():93] handle_request: get_summary
+2021-03-16 17:17:43,192 DEBUG   HandlerThread:19328 [handler.py:handle_request():93] handle_request: sampled_history
+2021-03-16 17:17:43,194 DEBUG   HandlerThread:19328 [handler.py:handle_request():93] handle_request: shutdown
+2021-03-16 17:17:43,195 INFO    HandlerThread:19328 [handler.py:finish():312] shutting down handler
+2021-03-16 17:17:44,010 INFO    WriterThread:19328 [datastore.py:close():258] close: C:\Users\rapha\Documents\GitHub\bias-mitigation-sgd\wandb\run-20210316_171734-3kh5p60p\run-3kh5p60p.wandb
+2021-03-16 17:17:44,183 INFO    SenderThread:19328 [sender.py:finish():766] shutting down sender
+2021-03-16 17:17:44,184 INFO    SenderThread:19328 [file_pusher.py:finish():176] shutting down file pusher
+2021-03-16 17:17:44,184 INFO    SenderThread:19328 [file_pusher.py:join():181] waiting for file pusher
+2021-03-16 17:17:44,185 INFO    MainThread:19328 [internal.py:handle_exit():156] Internal process exited

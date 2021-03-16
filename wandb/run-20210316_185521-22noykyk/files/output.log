@@ -1,0 +1,28 @@
+Secure RNG turned off. This is perfectly fine for experimentation as it allows for much faster training performance, but remember to turn it on and retrain one last time before production with ``secure_rng`` turned on.
+#=========================== Test data ==========================#
+test_data:  150
+
+=== RUN # 2 ====================================
+
+  0%|                                                       | 0/2 [00:00<?, ?it/s]CUDA initialization: Found no NVIDIA driver on your system. Please check that you have an NVIDIA GPU and installed a driver from http://www.nvidia.com/Download/index.aspx (Triggered internally at  ..\c10\cuda\CUDAFunctions.cpp:100.)
+ 50%|███████████████████████▌                       | 1/2 [00:01<00:01,  1.88s/it] 50%|███████████████████████▌                       | 1/2 [00:02<00:02,  2.05s/it]
+Traceback (most recent call last):
+  File "main.py", line 317, in <module>
+    main()
+  File "main.py", line 212, in main
+    train(args, model, device, train_data, criterion, optimizer, epoch, s)
+  File "C:\Users\rapha\Documents\GitHub\bias-mitigation-sgd\train.py", line 34, in train
+    loss.backward()
+  File "C:\Users\rapha\AppData\Local\Programs\Python\Python37\lib\site-packages\torch\tensor.py", line 221, in backward
+    torch.autograd.backward(self, gradient, retain_graph, create_graph)
+  File "C:\Users\rapha\AppData\Local\Programs\Python\Python37\lib\site-packages\torch\autograd\__init__.py", line 132, in backward
+    allow_unreachable=True)  # allow_unreachable flag
+  File "C:\Users\rapha\AppData\Local\Programs\Python\Python37\lib\site-packages\opacus\autograd_grad_sample.py", line 183, in _capture_backprops
+    _compute_grad_sample(layer, backprops, loss_reduction, batch_first)
+  File "C:\Users\rapha\AppData\Local\Programs\Python\Python37\lib\site-packages\opacus\autograd_grad_sample.py", line 245, in _compute_grad_sample
+    compute_layer_grad_sample(layer, A, B)
+  File "C:\Users\rapha\AppData\Local\Programs\Python\Python37\lib\site-packages\opacus\supported_layers_grad_samplers.py", line 80, in _compute_linear_grad_sample
+    gs = torch.einsum("n...i,n...j->n...ij", B, A)
+  File "C:\Users\rapha\AppData\Local\Programs\Python\Python37\lib\site-packages\torch\functional.py", line 344, in einsum
+    return _VF.einsum(equation, operands)  # type: ignore
+KeyboardInterrupt

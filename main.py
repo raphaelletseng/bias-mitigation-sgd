@@ -150,6 +150,9 @@ def main():
             train_size, test_size = dataset.__len__()
             train_data, test_data = dataset.__getitem__()
 
+            print("~~~~~ TEST DATA ~~~~~")
+            print(test_data)
+
             cat_emb_size, num_conts = dataset.get_input_properties()
             train_size, test_size = dataset.__len__()
             sensitive_cat_keys = dataset.getkeys()
@@ -170,12 +173,12 @@ def main():
 
     #constraint = DemographicParity
     model = RegressionModel(emb_szs=cat_emb_size,
-                        n_cont=num_conts,
-                        emb_drop=0.04,
-                        out_sz=1,
-                        szs=[1000, 500, 250],
-                        drops=[0.001, 0.01, 0.01],
-                        y_range=(0, 1)).to(device)
+                    n_cont=num_conts,
+                    emb_drop=0.04,
+                    out_sz=1,
+                    szs=[1000, 500, 250],
+                    drops=[0.001, 0.01, 0.01],
+                    y_range=(0, 1)).to(device)
 
     for layer in model.children():
         if hasattr(layer, 'reset_parameters'):
@@ -196,14 +199,30 @@ def main():
             )
             privacy_engine.attach(optimizer)
 
+    print("#=========================== Test data ==========================#")
+    print ("test_data: ", test_data)
 
-    if i == 0: # print model properties
-        print(model, '\n')
-    print("\n=== RUN # {} ====================================\n".format(i))
+    if args.num_teachers == 0 or s == 0:
+        if i == 0: # print model properties
+            print(model, '\n')
 
-    for epoch in range(1, args.epochs + 1):
-        train(args, model, device, train_data, criterion, optimizer, epoch, s)
-    accuracy, avg_loss, avg_precision, avg_recall, avg_eq_odds, avg_tpr, avg_dem_par, cm, sub_cm, overall_results = test(args, model, device, test_data, test_size, sensitive_idx)
+        print("\n=== RUN # {} ====================================\n".format(i))
+
+        for epoch in range(1, args.epochs + 1):
+            train(args, model, device, train_data, criterion, optimizer, epoch, s)
+
+        accuracy, avg_loss, avg_precision, avg_recall, avg_eq_odds, avg_tpr, avg_dem_par, cm, sub_cm, overall_results = test(args, model, device, test_data, test_size, sensitive_idx)
+    else:  # PATE MODEL
+        print("!!!!!! ENTERED HERE")
+
+        #teacher_models = train_models(args, model, teacher_loaders, criterion, optimizer, device)
+        #preds, student_labels = aggregated_teacher(teacher_models, student_train_loader, s, device)
+        #accuracy, avg_loss, avg_precision, avg_recall, avg_eq_odds, avg_tpr, avg_dem_par, cm, sub_cm, overall_results = test_student(args, student_train_loader, student_labels, student_test_loader, test_size, cat_emb_size, num_conts,
+        #             device, sensitive_idx)
+
+
+
+
 
 #-----------------------------------------------
     #Bias mitigation
@@ -211,7 +230,7 @@ def main():
     net = SampleWeightNeuralNet(
         RegressionModel,
         max_epochs = 20,
-    #optimizer = optim.Adam,
+        optimizer = optimizer,
         lr = 0.001,
     #batch_size = 512,
     #train_split = None,
@@ -220,9 +239,21 @@ def main():
         device = device )
 
     fit = net.fit(X,y)
-    print(fit)
+    print("\n Fit:", fit)
     y_pred = net.predict(X)
-    print(y_pred)
+    print("\n predict:", y_pred)
+
+# FAIRLEARN MITIGATION ---------------------- #
+    np.random.seed(0)
+    constraint = DemographicParity()
+    classifier = net
+    mitigator = ExponentiatedGradient(classifier, constraint)
+    mitigator.fit(X, y_true, sensitive_features = sensitive)
+    y_pred_mitigated = mitigator.predict
+
+    sr_mitigated = MetricFrame()
+    print(sr_mitigated.overall)
+    print(sr_mitigated.by_group)
 
     result = """
 ===================

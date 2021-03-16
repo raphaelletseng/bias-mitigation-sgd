@@ -1,0 +1,33 @@
+2021-03-16 17:17:34,357 INFO    MainThread:13468 [wandb_setup.py:_flush():70] setting env: {}
+2021-03-16 17:17:34,358 INFO    MainThread:13468 [wandb_setup.py:_flush():70] multiprocessing start_methods=spawn
+2021-03-16 17:17:34,358 INFO    MainThread:13468 [wandb_setup.py:_flush():70] setting login settings: {}
+2021-03-16 17:17:34,358 INFO    MainThread:13468 [wandb_setup.py:_flush():70] setting login settings: {}
+2021-03-16 17:17:34,359 INFO    MainThread:13468 [wandb_init.py:_log_setup():318] Logging user logs to C:\Users\rapha\Documents\GitHub\bias-mitigation-sgd\wandb\run-20210316_171734-3kh5p60p\logs\debug.log
+2021-03-16 17:17:34,359 INFO    MainThread:13468 [wandb_init.py:_log_setup():319] Logging internal logs to C:\Users\rapha\Documents\GitHub\bias-mitigation-sgd\wandb\run-20210316_171734-3kh5p60p\logs\debug-internal.log
+2021-03-16 17:17:40,829 INFO    MainThread:13468 [wandb_run.py:_console_start():1399] atexit reg
+2021-03-16 17:17:40,830 INFO    MainThread:13468 [wandb_run.py:_redirect():1262] redirect: SettingsConsole.WRAP
+2021-03-16 17:17:40,831 INFO    MainThread:13468 [wandb_run.py:_redirect():1297] Wrapping output streams.
+2021-03-16 17:17:40,831 INFO    MainThread:13468 [wandb_run.py:_redirect():1313] Redirects installed.
+2021-03-16 17:17:40,960 INFO    MainThread:13468 [wandb_run.py:_atexit_cleanup():1369] got exitcode: 1
+2021-03-16 17:17:40,962 INFO    MainThread:13468 [wandb_run.py:_restore():1341] restore
+2021-03-16 17:17:41,177 INFO    MainThread:13468 [wandb_run.py:_wait_for_finish():1492] got exit ret: file_counts {
+  wandb_count: 1
+}
+pusher_stats {
+  uploaded_bytes: 896
+  total_bytes: 896
+}
+
+2021-03-16 17:17:43,183 INFO    MainThread:13468 [wandb_run.py:_wait_for_finish():1492] got exit ret: done: true
+exit_result {
+}
+file_counts {
+  wandb_count: 5
+}
+pusher_stats {
+  uploaded_bytes: 4860
+  total_bytes: 4860
+}
+
+2021-03-16 17:17:44,510 INFO    MainThread:13468 [wandb_run.py:_show_files():1714] logging synced files
+2021-03-16 17:17:44,516 INFO    MainThread:13468 [internal.py:handle_exit():156] Internal process exited

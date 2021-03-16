@@ -1,0 +1,45 @@
+2021-03-16 18:55:21,211 INFO    MainThread:9308 [wandb_setup.py:_flush():69] setting env: {}
+2021-03-16 18:55:21,212 INFO    MainThread:9308 [wandb_setup.py:_flush():69] setting login settings: {}
+2021-03-16 18:55:21,212 INFO    MainThread:9308 [wandb_setup.py:_flush():69] setting login settings: {}
+2021-03-16 18:55:21,212 INFO    MainThread:9308 [wandb_init.py:_log_setup():334] Logging user logs to C:\Users\rapha\Documents\GitHub\bias-mitigation-sgd\wandb\run-20210316_185521-22noykyk\logs\debug.log
+2021-03-16 18:55:21,212 INFO    MainThread:9308 [wandb_init.py:_log_setup():335] Logging internal logs to C:\Users\rapha\Documents\GitHub\bias-mitigation-sgd\wandb\run-20210316_185521-22noykyk\logs\debug-internal.log
+2021-03-16 18:55:21,213 INFO    MainThread:9308 [wandb_init.py:init():367] calling init triggers
+2021-03-16 18:55:21,213 INFO    MainThread:9308 [wandb_init.py:init():374] wandb.init called with sweep_config: {}
+config: {'run_name': 'adult-DP_SGD-edu-test-3', 'architecture': 'RegressionModel', 'dataset': 'adult', 'batch_size': 128, 'n_epoch': 20, 'learning_rate': 0.1, 'sigma(noise)': 2.85, 'disable_dp': False}
+2021-03-16 18:55:21,213 INFO    MainThread:9308 [wandb_init.py:init():416] starting backend
+2021-03-16 18:55:21,213 INFO    MainThread:9308 [backend.py:_multiprocessing_setup():71] multiprocessing start_methods=spawn, using: spawn
+2021-03-16 18:55:21,218 INFO    MainThread:9308 [backend.py:ensure_launched():123] starting backend process...
+2021-03-16 18:55:21,389 INFO    MainThread:9308 [backend.py:ensure_launched():128] started backend process with pid: 14712
+2021-03-16 18:55:21,391 INFO    MainThread:9308 [wandb_init.py:init():421] backend started and connected
+2021-03-16 18:55:21,392 INFO    MainThread:9308 [wandb_init.py:init():461] updated telemetry
+2021-03-16 18:55:21,394 INFO    MainThread:9308 [wandb_init.py:init():480] communicating current version
+2021-03-16 18:55:23,180 INFO    MainThread:9308 [wandb_init.py:init():485] got version response 
+2021-03-16 18:55:23,181 INFO    MainThread:9308 [wandb_init.py:init():493] communicating run to backend with 30 second timeout
+2021-03-16 18:55:23,664 INFO    MainThread:9308 [wandb_init.py:init():518] starting run threads in backend
+2021-03-16 18:55:26,670 INFO    MainThread:9308 [wandb_run.py:_console_start():1480] atexit reg
+2021-03-16 18:55:26,672 INFO    MainThread:9308 [wandb_run.py:_redirect():1343] redirect: SettingsConsole.WRAP
+2021-03-16 18:55:26,673 INFO    MainThread:9308 [wandb_run.py:_redirect():1378] Wrapping output streams.
+2021-03-16 18:55:26,673 INFO    MainThread:9308 [wandb_run.py:_redirect():1394] Redirects installed.
+2021-03-16 18:55:26,673 INFO    MainThread:9308 [wandb_init.py:init():542] run started, returning control to user process
+2021-03-16 18:55:28,988 INFO    MainThread:9308 [wandb_run.py:_atexit_cleanup():1450] got exitcode: 255
+2021-03-16 18:55:28,989 INFO    MainThread:9308 [wandb_run.py:_restore():1422] restore
+2021-03-16 18:55:29,150 INFO    MainThread:9308 [wandb_run.py:_wait_for_finish():1572] got exit ret: file_counts {
+  wandb_count: 1
+}
+pusher_stats {
+  uploaded_bytes: 899
+  total_bytes: 899
+}
+
+2021-03-16 18:55:31,170 INFO    MainThread:9308 [wandb_run.py:_wait_for_finish():1572] got exit ret: done: true
+exit_result {
+}
+file_counts {
+  wandb_count: 5
+}
+pusher_stats {
+  uploaded_bytes: 6799
+  total_bytes: 6799
+}
+
+2021-03-16 18:55:32,519 INFO    MainThread:9308 [wandb_run.py:_show_files():1794] logging synced files

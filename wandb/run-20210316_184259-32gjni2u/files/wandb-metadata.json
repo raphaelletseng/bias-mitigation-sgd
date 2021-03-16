@@ -1,0 +1,28 @@
+{
+    "os": "Windows-10-10.0.19041-SP0",
+    "python": "3.7.4",
+    "heartbeatAt": "2021-03-16T22:43:05.031120",
+    "startedAt": "2021-03-16T22:42:59.136894",
+    "docker": null,
+    "cpu_count": 4,
+    "cuda": null,
+    "args": [
+        "--device",
+        "cpu",
+        "--dataset=adult",
+        "--sensitive=education",
+        "-rn=adult-DP_SGD-edu-bm2"
+    ],
+    "state": "running",
+    "program": "main.py",
+    "codePath": "main.py",
+    "git": {
+        "remote": "https://github.com/raphaelletseng/bias-mitigation-sgd.git",
+        "commit": "647da3578cc05463c3d2f929d03837cd3643d69f"
+    },
+    "email": "raphaelle.tseng@mail.mcgill.ca",
+    "root": "C:/Users/rapha/Documents/GitHub/bias-mitigation-sgd",
+    "host": "Raphaelle-PC",
+    "username": "rapha",
+    "executable": "C:\\Users\\rapha\\AppData\\Local\\Programs\\Python\\Python37\\python.exe"
+}

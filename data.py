@@ -20,8 +20,8 @@ class data_loader():
                     'education-num', 'marital-status', 'occupation',
                     'relationship', 'race', 'sex', 'capital-gain',
                     'capital-loss', 'hours-per-week', 'native-country', 'y']
-        train_df = pd.read_csv(train_path, sep=',', names=cols, nrows=100)
-        test_df = pd.read_csv(test_path, sep=',', names=cols, nrows=100)
+        train_df = pd.read_csv(train_path, sep=',', names=cols, nrows=150)
+        test_df = pd.read_csv(test_path, sep=',', names=cols, nrows=150)
 
         train_df = train_df.replace({'?': np.nan})
         test_df = test_df.replace({'?': np.nan})
@@ -75,7 +75,7 @@ class data_loader():
     def __len__(self):
         return self.train_size, self.test_size
 
-    
+
 
 class LoadDataset(Dataset):
     def __init__(self, data, mode, sensitive_col):
