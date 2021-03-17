@@ -67,7 +67,7 @@ class data_loader():
         return self.cat_emb_size, self.num_conts
 
     def __getitem__(self):
-        return self.train_loader, self.test_size
+        return self.train_loader, self.test_loader
 
     def get_sensitive_idx(self):
         return self.sensitive_col_idx

@@ -159,6 +159,8 @@ def main():
             sensitive_idx = dataset.get_sensitive_idx()
             print(sensitive_cat_keys)
 
+            print('\n i: ', i)
+
     wandb.init(project="fairlearn-bias-mitigation-sgd", name=args.run_name,  config={
             "run_name": args.run_name,
             "architecture": 'RegressionModel',
@@ -211,7 +213,7 @@ def main():
         for epoch in range(1, args.epochs + 1):
             train(args, model, device, train_data, criterion, optimizer, epoch, s)
 
-        accuracy, avg_loss, avg_precision, avg_recall, avg_eq_odds, avg_tpr, avg_dem_par, cm, sub_cm, overall_results = test(args, model, device, test_data, test_size, sensitive_idx)
+        #accuracy, avg_loss, avg_precision, avg_recall, avg_eq_odds, avg_tpr, avg_dem_par, cm, sub_cm, overall_results = test(args, model, device, test_data, test_size, sensitive_idx)
     else:  # PATE MODEL
         print("!!!!!! ENTERED HERE")
 
@@ -222,8 +224,8 @@ def main():
 
 
 
-
-
+        # reset optimizer
+    optimizer.zero_grad()
 #-----------------------------------------------
     #Bias mitigation
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
@@ -234,13 +236,14 @@ def main():
         lr = 0.001,
     #batch_size = 512,
     #train_split = None,
-        iterator_train_shuffle = True,
+        iterator_train__shuffle = True,
         criterion = nn.BCELoss,
-        device = device )
+        device = device
+    )
 
-    fit = net.fit(X,y)
+    fit = net.fit(train_data, sensitive_idx) #y labels) # X, y
     print("\n Fit:", fit)
-    y_pred = net.predict(X)
+    y_pred = net.predict(train_data) # y
     print("\n predict:", y_pred)
 
 # FAIRLEARN MITIGATION ---------------------- #
@@ -248,7 +251,7 @@ def main():
     constraint = DemographicParity()
     classifier = net
     mitigator = ExponentiatedGradient(classifier, constraint)
-    mitigator.fit(X, y_true, sensitive_features = sensitive)
+    mitigator.fit(train_data, y_true, sensitive_features = sensitive)
     y_pred_mitigated = mitigator.predict
 
     sr_mitigated = MetricFrame()
