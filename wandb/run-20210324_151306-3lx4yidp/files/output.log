@@ -1,0 +1,66 @@
+Secure RNG turned off. This is perfectly fine for experimentation as it allows for much faster training performance, but remember to turn it on and retrain one last time before production with ``secure_rng`` turned on.
+#=========================== Test data ==========================#
+test_data:  <torch.utils.data.dataloader.DataLoader object at 0x000001E5E60730C8>
+RegressionModel(
+  (embs): ModuleList(
+    (0): Embedding(8, 4)
+    (1): Embedding(14, 7)
+    (2): Embedding(8, 4)
+    (3): Embedding(14, 7)
+    (4): Embedding(7, 3)
+    (5): Embedding(6, 3)
+    (6): Embedding(3, 1)
+    (7): Embedding(14, 7)
+  )
+  (lins): ModuleList(
+    (0): Linear(in_features=40, out_features=1000, bias=True)
+    (1): Linear(in_features=1000, out_features=500, bias=True)
+    (2): Linear(in_features=500, out_features=250, bias=True)
+  )
+  (bns): ModuleList(
+    (0): GroupNorm(1, 1000, eps=1e-05, affine=True)
+    (1): GroupNorm(1, 500, eps=1e-05, affine=True)
+    (2): GroupNorm(1, 250, eps=1e-05, affine=True)
+  )
+  (outp): Linear(in_features=250, out_features=1, bias=True)
+  (emb_drop): Dropout(p=0.04, inplace=False)
+  (drops): ModuleList(
+    (0): Dropout(p=0.001, inplace=False)
+    (1): Dropout(p=0.01, inplace=False)
+    (2): Dropout(p=0.01, inplace=False)
+  )
+  (bn): GroupNorm(1, 4, eps=1e-05, affine=True)
+  (activation): Sigmoid()
+) 
+
+
+=== RUN # 0 ====================================
+
+  0%|                                                       | 0/2 [00:00<?, ?it/s]CUDA initialization: Found no NVIDIA driver on your system. Please check that you have an NVIDIA GPU and installed a driver from http://www.nvidia.com/Download/index.aspx (Triggered internally at  ..\c10\cuda\CUDAFunctions.cpp:100.)
+ 50%|███████████████████████▌                       | 1/2 [00:01<00:01,  1.10s/it]grad and param do not obey the gradient layout contract. This is not an error, but may impair performance.
+grad.sizes() = [3, 1], strides() = [1, 3]
+param.sizes() = [3, 1], strides() = [1, 1] (Triggered internally at  ..\torch/csrc/autograd/functions/accumulate_grad.h:170.)
+PrivacyEngine expected a batch of size 128 but the last step received a batch of size 98. This means that the privacy analysis will be a bit more pessimistic. You can set `drop_last = True` in your PyTorch dataloader to avoid this problem completely
+100%|███████████████████████████████████████████████| 2/2 [00:01<00:00,  1.12it/s]100%|███████████████████████████████████████████████| 2/2 [00:01<00:00,  1.33it/s]
+Train Epoch: 1 	Loss: 0.713411 (ε = 7.39, δ = 1e-05) for α = 4.4
+  0%|                                                       | 0/2 [00:00<?, ?it/s] 50%|███████████████████████▌                       | 1/2 [00:00<00:00,  2.42it/s] 50%|███████████████████████▌                       | 1/2 [00:00<00:00,  1.71it/s]
+Traceback (most recent call last):
+  File "main.py", line 317, in <module>
+    main()
+  File "main.py", line 228, in main
+    train(args, model, device, train_data, criterion, optimizer, epoch, s)
+  File "C:\Users\rapha\Documents\GitHub\bias-mitigation-sgd\train.py", line 34, in train
+    loss.backward()
+  File "C:\Users\rapha\AppData\Local\Programs\Python\Python37\lib\site-packages\torch\tensor.py", line 221, in backward
+    torch.autograd.backward(self, gradient, retain_graph, create_graph)
+  File "C:\Users\rapha\AppData\Local\Programs\Python\Python37\lib\site-packages\torch\autograd\__init__.py", line 132, in backward
+    allow_unreachable=True)  # allow_unreachable flag
+  File "C:\Users\rapha\AppData\Local\Programs\Python\Python37\lib\site-packages\opacus\autograd_grad_sample.py", line 183, in _capture_backprops
+    _compute_grad_sample(layer, backprops, loss_reduction, batch_first)
+  File "C:\Users\rapha\AppData\Local\Programs\Python\Python37\lib\site-packages\opacus\autograd_grad_sample.py", line 245, in _compute_grad_sample
+    compute_layer_grad_sample(layer, A, B)
+  File "C:\Users\rapha\AppData\Local\Programs\Python\Python37\lib\site-packages\opacus\supported_layers_grad_samplers.py", line 80, in _compute_linear_grad_sample
+    gs = torch.einsum("n...i,n...j->n...ij", B, A)
+  File "C:\Users\rapha\AppData\Local\Programs\Python\Python37\lib\site-packages\torch\functional.py", line 344, in einsum
+    return _VF.einsum(equation, operands)  # type: ignore
+KeyboardInterrupt

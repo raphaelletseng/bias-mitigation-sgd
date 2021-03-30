@@ -35,10 +35,18 @@ class data_loader():
         train_df = train_df.sample(frac=1).reset_index(drop=True)  # shuffle df
         test_df = test_df.sample(frac=1).reset_index(drop=True)
 
+#-------------------------------------------#
+        X = pd.get_dummies(train_df)
+        print(X)
+    #    y_true = (train_df == ">50K") *1
+    #    education = data.data['education']
+#        education.value_counts()
 #--------------------------------------------------------------#
         train_data = LoadDataset(train_df, args.dataset, args.sensitive)
         test_data = LoadDataset(test_df, args.dataset, args.sensitive)
 
+        self.X = X
+        self.y = train_data.get_Y();
         self.sensitive_keys = train_data.getkeys()
         self.train_size = len(train_data)
         self.test_size = len(test_data)
@@ -46,6 +54,9 @@ class data_loader():
         self.cat_emb_size = train_data.categorical_embedding_sizes  # size of categorical embedding
         print(self.cat_emb_size)
         self.num_conts = train_data.num_numerical_cols  # number of numerical variables
+
+        self.categorical_data=train_data.getCatData()
+        self.numerical_data=train_data.getContData()
 
         class_count = dict(train_df.y.value_counts())
         class_weights = [value / len(train_data) for _, value in class_count.items()]
@@ -59,6 +70,11 @@ class data_loader():
         self.test_loader = DataLoader(dataset=test_data,
                                           batch_size=test_batch,
                                           drop_last=True)
+
+    def get_X(self):
+        return self.X
+    def get_Y(self):
+        return self.y
 
     def getkeys(self):
         return self.sensitive_keys
@@ -74,6 +90,12 @@ class data_loader():
 
     def __len__(self):
         return self.train_size, self.test_size
+
+    def getCatData(self):
+        return self.categorical_data
+
+    def getContData(self):
+        return self.numerical_data
 
 
 
@@ -133,6 +155,10 @@ class LoadDataset(Dataset):
 
         self.num_numerical_cols = self.numerical_data.shape[1]
 
+        #edits
+    def get_Y(self):
+        return self.Y
+
     def get_sensitive_idx(self):
         return  self.sensitive_col_idx
 
@@ -145,6 +171,11 @@ class LoadDataset(Dataset):
     def __len__(self):
         return self.len
 
+    def getCatData(self):
+        return self.categorical_data
+
+    def getContData(self):
+        return self.numerical_data
 
 def get_class_distribution(dataset_obj):
     count_dict = {k: 0 for k, v in dataset_obj.class_to_idx.items()}

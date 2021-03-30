@@ -12,6 +12,10 @@ import numpy as np
 import shap
 from toolz import curry
 from fairlearn.reductions import ExponentiatedGradient, DemographicParity
+from fairlearn.metrics import MetricFrame
+from skorch import NeuralNetClassifier
+import pandas as pd
+#from . import package_test_common as ptc
 
 #from syft.frameworks.torch.dp import pate
 
@@ -68,9 +72,9 @@ def main():
     parser.add_argument(
         "--sigma",
         type=list,
-        default=[0, 3.0, 2.85],
+        default=[1.0],
         metavar="S",
-        help="Noise multiplier (default [0, 0.1, 0.5, 1.0])",
+        help="Noise multiplier (default = [0, 3.0, 2.85, 2.6, 2.45, 2.3, 2.15, 2.0, 1.85, 1.6, 1.45, 1.3, 1.15, 1.0, 0.85, 0.6, 0.45, 0.3, 0.15]",
     )
     parser.add_argument(
         "-c",
@@ -150,6 +154,23 @@ def main():
             train_size, test_size = dataset.__len__()
             train_data, test_data = dataset.__getitem__()
 
+            #----------
+            #print(dataset)
+            X = dataset.get_X();
+            print(X)
+
+            X_cat = dataset.getCatData();
+            X_cont = dataset.getContData();
+            print(X_cat)
+            print(X_cont)
+            print("###############################################")
+            #print(X)
+            #print(X.info)
+            #print(len(X))
+            y_true = dataset.get_Y()
+            print(len(y_true))
+            #-----------
+
             print("~~~~~ TEST DATA ~~~~~")
             print(test_data)
 
@@ -157,6 +178,8 @@ def main():
             train_size, test_size = dataset.__len__()
             sensitive_cat_keys = dataset.getkeys()
             sensitive_idx = dataset.get_sensitive_idx()
+            y = dataset.get_Y();
+            #X = dataset.get_X();
             print(sensitive_cat_keys)
 
             print('\n i: ', i)
@@ -226,38 +249,21 @@ def main():
 
         # reset optimizer
     optimizer.zero_grad()
-#-----------------------------------------------
-    #Bias mitigation
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
-    net = SampleWeightNeuralNet(
-        RegressionModel,
-        max_epochs = 20,
-        optimizer = optimizer,
+    net = NeuralNetClassifier(
+        model,
+        max_epochs=20,
+        optimizer = optim.Adam,
         lr = 0.001,
-    #batch_size = 512,
-    #train_split = None,
         iterator_train__shuffle = True,
         criterion = nn.BCELoss,
         device = device
     )
 
-    fit = net.fit(train_data, sensitive_idx) #y labels) # X, y
+    fit = net.fit(X_cont, X_cat, y_true) #y labels) # X, y
     print("\n Fit:", fit)
     y_pred = net.predict(train_data) # y
     print("\n predict:", y_pred)
-
-# FAIRLEARN MITIGATION ---------------------- #
-    np.random.seed(0)
-    constraint = DemographicParity()
-    classifier = net
-    mitigator = ExponentiatedGradient(classifier, constraint)
-    mitigator.fit(train_data, y_true, sensitive_features = sensitive)
-    y_pred_mitigated = mitigator.predict
-
-    sr_mitigated = MetricFrame()
-    print(sr_mitigated.overall)
-    print(sr_mitigated.by_group)
-
     result = """
 ===================
 Test set: {}

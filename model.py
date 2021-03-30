@@ -5,6 +5,7 @@ import pytorch_lightning as pl
 import torch.optim as optim
 from skorch import NeuralNetClassifier
 import pandas as pd
+import numpy as np
 
 class RegressionModel(nn.Module):
 #class RegressionModel(pl.LightningModule):
@@ -84,8 +85,9 @@ class RegressionModel(nn.Module):
 # A class for sklearns predict and fit in pytorch
 class SampleWeightNeuralNet(NeuralNetClassifier):
     def __init__(self, *args, criterion__reduce=False, **kwargs):
-        super().__init__(*args, criterion__reduce = criterion__reduce, **kwargs)
-
+    #def __init__(self, *args, criterion__reduce=False, **kwargs):
+        #super().__init__(*args, criterion__reduce = criterion__reduce, **kwargs)
+        super().__init__(*args, criterion__reduce=criterion__reduce, **kwargs)
     def fit(self, X, y, sample_weight=None):
         if isinstance(X, (pd.DataFrame, pd.Series)):
             X = X.to_numpy().astype('float32')

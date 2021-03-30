@@ -1,0 +1,28 @@
+2021-03-24 15:24:16,173 INFO    MainThread:18528 [internal.py:wandb_internal():91] W&B internal server running at pid: 18528, started at: 2021-03-24 15:24:16.171094
+2021-03-24 15:24:16,187 INFO    WriterThread:18528 [datastore.py:open_for_write():77] open: C:\Users\rapha\Documents\GitHub\bias-mitigation-sgd\wandb\run-20210324_152413-12vi63w7\run-12vi63w7.wandb
+2021-03-24 15:24:16,187 DEBUG   HandlerThread:18528 [handler.py:handle_request():101] handle_request: check_version
+2021-03-24 15:24:16,189 DEBUG   SenderThread:18528 [sender.py:send():161] send: header
+2021-03-24 15:24:16,189 DEBUG   SenderThread:18528 [sender.py:send():161] send: request
+2021-03-24 15:24:16,189 DEBUG   SenderThread:18528 [sender.py:send_request():170] send_request: check_version
+2021-03-24 15:24:16,342 DEBUG   SenderThread:18528 [sender.py:send():161] send: run
+2021-03-24 15:24:16,715 INFO    SenderThread:18528 [sender.py:_start_run_threads():638] run started: 12vi63w7 with start time 1616613854
+2021-03-24 15:24:16,716 DEBUG   SenderThread:18528 [sender.py:send():161] send: summary
+2021-03-24 15:24:16,716 DEBUG   HandlerThread:18528 [handler.py:handle_request():101] handle_request: run_start
+2021-03-24 15:24:16,728 INFO    SenderThread:18528 [sender.py:_save_file():769] saving file wandb-summary.json with policy end
+2021-03-24 15:24:19,482 WARNING MainThread:18528 [internal.py:wandb_internal():146] Internal process interrupt: 1
+2021-03-24 15:24:20,785 DEBUG   HandlerThread:18528 [meta.py:__init__():34] meta init
+2021-03-24 15:24:20,786 DEBUG   HandlerThread:18528 [meta.py:__init__():48] meta init done
+2021-03-24 15:24:20,786 DEBUG   HandlerThread:18528 [meta.py:probe():190] probe
+2021-03-24 15:24:20,788 DEBUG   HandlerThread:18528 [meta.py:_setup_git():180] setup git
+2021-03-24 15:24:21,016 DEBUG   HandlerThread:18528 [meta.py:_setup_git():187] setup git done
+2021-03-24 15:24:21,016 DEBUG   HandlerThread:18528 [meta.py:_save_pip():52] save pip
+2021-03-24 15:24:21,017 DEBUG   HandlerThread:18528 [meta.py:_save_pip():66] save pip done
+2021-03-24 15:24:21,017 DEBUG   HandlerThread:18528 [meta.py:probe():231] probe done
+2021-03-24 15:24:21,027 DEBUG   SenderThread:18528 [sender.py:send():161] send: files
+2021-03-24 15:24:21,029 INFO    SenderThread:18528 [sender.py:_save_file():769] saving file wandb-metadata.json with policy now
+2021-03-24 15:24:51,469 DEBUG   SenderThread:18528 [sender.py:send():161] send: stats
+2021-03-24 15:25:15,101 WARNING MainThread:18528 [internal.py:wandb_internal():146] Internal process interrupt: 2
+2021-03-24 15:25:15,102 ERROR   MainThread:18528 [internal.py:wandb_internal():149] Internal process interrupted.
+2021-03-24 15:25:15,648 INFO    WriterThread:18528 [datastore.py:close():258] close: C:\Users\rapha\Documents\GitHub\bias-mitigation-sgd\wandb\run-20210324_152413-12vi63w7\run-12vi63w7.wandb
+2021-03-24 15:25:15,648 INFO    HandlerThread:18528 [handler.py:finish():535] shutting down handler
+2021-03-24 15:25:15,648 INFO    SenderThread:18528 [sender.py:finish():872] shutting down sender
