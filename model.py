@@ -6,6 +6,13 @@ import torch.optim as optim
 from skorch import NeuralNetClassifier
 import pandas as pd
 import numpy as np
+from skorch.utils import check_indexing
+from skorch.utils import multi_indexing
+from skorch.utils import to_numpy
+from skorch.utils import is_pandas_ndframe
+from skorch.utils import flatten
+from functools import partial
+from scipy import sparse
 
 class RegressionModel(nn.Module):
 #class RegressionModel(pl.LightningModule):
@@ -37,6 +44,9 @@ class RegressionModel(nn.Module):
         self.activation = nn.Sigmoid()
 
     def forward(self, x_cat, x_cont):
+        # Split one output into two
+    #    x_cat = D1.get_X_cat()
+#        x_cont = D1.get_X_cont()
 
 
         # embedding for categorical variables
@@ -82,21 +92,43 @@ class RegressionModel(nn.Module):
         sc = 2/(x.size(1)+1)
         x.uniform_(-sc,sc)
 
+# nope to tuples
 # A class for sklearns predict and fit in pytorch
 class SampleWeightNeuralNet(NeuralNetClassifier):
     def __init__(self, *args, criterion__reduce=False, **kwargs):
     #def __init__(self, *args, criterion__reduce=False, **kwargs):
         #super().__init__(*args, criterion__reduce = criterion__reduce, **kwargs)
         super().__init__(*args, criterion__reduce=criterion__reduce, **kwargs)
-    def fit(self, X, y, sample_weight=None):
-        if isinstance(X, (pd.DataFrame, pd.Series)):
+
+
+
+    def fit(self, X_cat, X_cont, y, sample_weight=None):
+        X = torch.cat([X_cat, X_cont], 1)
+    #    X = D1.get_X()
+    #    y = D1.get_y()
+    #    X_cat = D1.get_X_cat()
+    #    X_cont = D1.get_X_cont()
+
+        if isinstance(X, (pd.DataFrame, pd.Series)) :
+            #//category and data point
+    #    X_tuple = (X_cat, X_cont)
+        #cat_array = X_tuple[0].numpy()
+        #cont_array = X_tuple[1].numpy()
+        #X_tuple = (cat_array, cont_array)#
+
+            #X_cat = X_cat.to_numpy().astype('float32')
             X = X.to_numpy().astype('float32')
+        #if isinstance(X_cont, (pd.DataFrame, pd.Series)):
+        #    X_cont = X_cont.to_numpy().astype('float32')
         if isinstance(y, (pd.DataFrame, pd.Series)):
             y = y.to_numpy()
         if sample_weight is not None and isinstance(sample_weight, (pd.DataFrame, pd.Series)):
             sample_weight = sample_weight.to_numpy()
         y = y.reshape([-1,1])
         sample_weight = sample_weight if sample_weight is not None else np.ones_like(y)
+        #X_cat = {'X':X_cat, 'sample_weight': sample_weight}
+        #X_cont = {'X':X_cont, 'sample_weight': sample_weight}
+        #X = {**X_cat, **X_cont}
         X = {'X':X, 'sample_weight': sample_weight}
         return super().fit(X, y)
 
@@ -139,3 +171,111 @@ def emb_init(x):
     x = x.weight.data
     sc = 2/(x.size(1)+1)
     x.uniform_(-sc,sc)
+
+def _apply_to_data(data, func, unpack_dict=False):
+    """Apply a function to data, trying to unpack different data
+    types.
+    """
+    apply_ = partial(_apply_to_data, func=func, unpack_dict=unpack_dict)
+
+    if isinstance(data, dict):
+        if unpack_dict:
+            return [apply_(v) for v in data.values()]
+        return {k: apply_(v) for k, v in data.items()}
+
+    if isinstance(data, (list, tuple)):
+        try:
+            # e.g.list/tuple of arrays
+            return [apply_(x) for x in data]
+        except TypeError:
+            return func(data)
+
+    return func(data)
+
+def _is_sparse(x):
+    try:
+        return sparse.issparse(x) or x.is_sparse
+    except AttributeError:
+        return False
+
+def _len(x):
+    if _is_sparse(x):
+        return x.shape[0]
+    return len(x)
+
+def get_len(data):
+    lens = [_apply_to_data(data, _len, unpack_dict=True)]
+    lens = list(flatten(lens))
+    len_set = set(lens)
+    if len(len_set)!=1:
+        raise ValueError("Dataset doesn't have consistent lengths")
+    return list(len_set)[0]
+
+
+class Dataset(torch.utils.data.Dataset):
+    def __init__(self, X_cat, X_cont, y, length= None):
+        self.X_cat = X_cat
+        self.X_cont = X_cont
+        self.y = y
+
+        X = torch.cat([X_cat, X_cont], 1)
+        print(X)
+        print("#######   THIS IS X ^^^ #########")
+        self.X = X
+        self.X_indexing = check_indexing(X)
+
+        self.y_indexing = check_indexing(y)
+
+    #    self.X_cat_indexing = check_indexing(X_cat)
+    #    self.X_cont_indexing = check_indexing(X_cont)
+    #    self.X_cat_is_ndframe = is_pandas_ndframe(X_cat)
+    #    self.X_cont_is_ndframe = is_pandas_ndframe(X_cont)
+        self.X_is_ndframe = is_pandas_ndframe(X)
+
+
+        if length is not None:
+            self._len = length
+            return
+
+        len_X = get_len(X)
+        #len_X_cont = get_len(X_cont)
+        if y is not None:
+            len_y = get_len(y)
+            if len_y!= len_X:
+                print("len_y: ", len_y)
+                print("\n")
+                print("len_X: ", len_X)
+                raise ValueError("Xs and y have inconsistent lengths")
+        self._len = len_X
+
+    def __len__(self):
+        return len(self._len)
+
+    def transform(self, X, y):
+        y = torch.Tensor([0]) if y is None else y
+        if sparse.issparse(X):
+            X = X.toarray().squeeze(0)
+        return X, y
+
+    def __getitem__(self, i):
+        X, y = self.X, self.y
+        if self.X_is_ndframe:
+            X = {k: X[k].values.reshape(-1,1) for k in X}
+        #if self.X_cont_is_ndframe:
+        #    X_cont = {k:X_cont[k].values.reshape(-1,1) for k in X_cont}
+        Xi = multi_indexing(X, i, self.X_indexing)
+        #X_conti = multi_indexing(X_cont, i, self.X_cont_indexing)
+        yi = multi_indexing(y, i, self.y_indexing)
+        return self.transform(Xi, yi)
+
+    def get_X(self):
+        return(self.X)
+
+    def get_y(self):
+        return(self.y)
+
+    def get_X_cat(self):
+        return (self.X_cat)
+
+    def get_X_cont(self):
+        return (self.X_cont)

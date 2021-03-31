@@ -1,7 +1,7 @@
 import argparse
 import torch
 from opacus import PrivacyEngine
-from model import RegressionModel, SampleWeightNeuralNet
+from model import RegressionModel, SampleWeightNeuralNet, Dataset
 from train import train
 from test import test
 from data import data_loader
@@ -51,7 +51,7 @@ def main():
         "-n",
         "--epochs",
         type=int,
-        default=20,
+        default=2, #CHANGED THIS
         metavar="N",
         help="Number of epochs to train (default: 20)",
     )
@@ -160,6 +160,8 @@ def main():
             print(X)
 
             X_cat = dataset.getCatData();
+
+
             X_cont = dataset.getContData();
             print(X_cat)
             print(X_cont)
@@ -247,20 +249,28 @@ def main():
 
 
 
+
         # reset optimizer
     optimizer.zero_grad()
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
-    net = NeuralNetClassifier(
+    net = SampleWeightNeuralNet(
         model,
-        max_epochs=20,
+        max_epochs=2,
         optimizer = optim.Adam,
         lr = 0.001,
         iterator_train__shuffle = True,
         criterion = nn.BCELoss,
         device = device
     )
+    #D1 = Dataset(X_cat, X_cont, y_true)
+    #X1 = D1.get_X()
+    #y1 = D1.get_y()
+    #print("did the dataset thing \n")
+    #print(X1)
+    #X1 = D1.get_X()
+    #y1 = D1.get_y()
 
-    fit = net.fit(X_cont, X_cat, y_true) #y labels) # X, y
+    fit = net.fit(X_cat, X_cont, y_true) #y labels) # X, y
     print("\n Fit:", fit)
     y_pred = net.predict(train_data) # y
     print("\n predict:", y_pred)

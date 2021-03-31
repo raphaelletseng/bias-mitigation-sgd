@@ -18,6 +18,7 @@ sex.value_counts()
 print(len(X))
 
 classifier = DecisionTreeClassifier(min_samples_leaf = 10, max_depth = 4)
+
 classifier.fit(X,y_true)
 y_pred = classifier.predict(X)
 gm = MetricFrame(accuracy_score, y_true, y_pred, sensitive_features = sex)
